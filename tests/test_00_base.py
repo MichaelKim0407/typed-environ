@@ -13,3 +13,11 @@ def test_getitem(tmpenv):
 def test_keyerror():
     with pytest.raises(KeyError):
         x = environ['X']
+
+
+def test_str(tmpenv):
+    with tmpenv(X='Y'):
+        x = environ['X']
+        assert isinstance(x, str)
+        assert type(x) != str
+        assert type(str(x)) == str  # should be str if explicitly cast

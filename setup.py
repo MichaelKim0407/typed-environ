@@ -2,6 +2,14 @@ from setuptools import setup, find_packages
 
 from typed_environ import __version__
 
+extra_test = [
+    'pytest>=4',
+    'pytest-cov>=2',
+]
+extra_dev = [
+    *extra_test,
+]
+
 setup(
     name='typed-environ',
     version=__version__,
@@ -12,6 +20,11 @@ setup(
     author_email='mkim0470@gmail.com',
 
     packages=find_packages(),
+
+    extras_require={
+        'test': extra_test,
+        'dev': extra_dev,
+    },
 
     classifiers=[
         'Intended Audience :: Developers',
